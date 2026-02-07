@@ -1,5 +1,5 @@
 import { test as base } from '@playwright/test';
-import { UserManager } from './api/user';
+import { UserManager } from './api/user-manager';
 
 type Service = {
   userManager: UserManager;
