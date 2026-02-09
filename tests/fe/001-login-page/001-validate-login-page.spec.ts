@@ -6,7 +6,7 @@ test.describe('Validate login page and logout', () => {
         await page.goto('https://www.saucedemo.com/');
         const loginPage = new LoginPage(page);
         await loginPage.login('standard_user', 'secret_sauce')
-        await expect(page).toHaveURL(/inventory/);
+        await page.waitForURL(/inventory/);
         await expect(page.getByText('Products')).toBeVisible();
     })
 
