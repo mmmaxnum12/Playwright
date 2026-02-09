@@ -16,10 +16,6 @@ export class LoginPage {
     async login(username: string, password: string) {
         await this.userNameLocator.fill(username);
         await this.passwordLocator.fill(password);
-        await Promise.all([
-            this.page.waitForURL(/inventory\.html/),
-            this.loginBtnLocator.click(),
-        ]);
-
+        await this.loginBtnLocator.click();
     }
 }
