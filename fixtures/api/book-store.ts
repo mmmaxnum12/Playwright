@@ -5,9 +5,10 @@ export class BookStore {
   private readonly request: APIRequestContext;
   private readonly serviceURL = Env.bookStoreURL;
 
-  private header = {
+  private headers: { [key: string]: string } = {
     'Content-Type': 'application/json',
     'X-API-Version': '1',
+    Authorization: Env.bookStoreToken,
   };
 
   constructor(data: { request: APIRequestContext }) {
@@ -15,15 +16,19 @@ export class BookStore {
   }
 
   async getBooks() {
-    return this.request.get(`${this.serviceURL}/Books`, {
-      headers: this.header,
+    return await this.request.get(`${this.serviceURL}/BookStore/v1/Books`, {
+      headers: this.headers,
     });
   }
 
-  async getBookByIsbn(isbn: string) {
-    return this.request.get(`${this.serviceURL}/Books`, {
-      headers: this.header,
-      params: { ISBN: isbn },
+  async addBookToUser(params: {
+    userId: string;
+    collectionOfIsbns: { isbn: string }[];
+  }) {
+    return await this.request.post(`${this.serviceURL}/BookStore/v1/Books`, {
+      headers: this.headers,
+      data: params,
     });
   }
+
 }
