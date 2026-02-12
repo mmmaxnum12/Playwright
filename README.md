@@ -8,3 +8,6 @@ Run node befor test
 1. npm install
 2. npx playwright install
 3. npx playwright --version
+
+Install faker 
+1. npm install @faker-js/faker --save-dev

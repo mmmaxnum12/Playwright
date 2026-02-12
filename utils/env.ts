@@ -1,16 +1,16 @@
 import dotenv from 'dotenv';
 dotenv.config({ quiet: true });
 
-export class Env {
-  static get baseURL(): string {
-    return process.env.BASEURL!;
-  }
+export namespace Env {
+  export const userManagerURL = process.env.USERMANAGER_URL ?? '';
+  export const bookStoreURL = process.env.BOOKSTORE_URL ?? '';
+  export const accountURL = process.env.ACCOUNT_URL ?? '';
+  export const cartURL = process.env.CARTURL_URL ?? '';
+  export const bookStoreCredential = {
+    username: process.env.BOOKSTORE_USERNAME ?? '',
+    password: process.env.BOOKSTORE_PASSWORD ?? '',
+  };
 
-  static get userManagerURL(): string {
-    return process.env.USERMANAGER_URL!;
-  }
 
-  static get bookStoreURL(): string {
-    return process.env.BOOKSTORE_URL!;
-  }
+  export const bookStoreToken = process.env.BOOKSTORE_TOKEN ?? '';
 }

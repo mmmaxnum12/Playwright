@@ -22,13 +22,13 @@ export class UserManager {
     }
 
     async getUser() {
-        return this.request.get(`${this.serviceURL}/users`, {
+        return await this.request.get(`${this.serviceURL}/users`, {
             headers: this.header,
         });
     }
 
     async getUserById(id: string) {
-        return this.request.get(`${this.serviceURL}/users/${id}`, {
+        return await this.request.get(`${this.serviceURL}/users/${id}`, {
             headers: this.header,
         });
     }
@@ -37,14 +37,14 @@ export class UserManager {
         id: string,
         param: { id: number; username: string; email: string; password: string }
     ) {
-        return this.request.put(`${this.serviceURL}/users/${id}`, {
+        return await this.request.put(`${this.serviceURL}/users/${id}`, {
             headers: this.header,
             data: param,
         });
     }
 
     async deleteUserById(id: string) {
-        return this.request.delete(`${this.serviceURL}/users/${id}`, {
+        return await this.request.delete(`${this.serviceURL}/users/${id}`, {
             headers: this.header,
         });
     }
